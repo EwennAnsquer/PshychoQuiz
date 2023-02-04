@@ -1,0 +1,12 @@
+#leftBar{
+    background-color: #b448ff;
+    height: 100vh;
+    width: 20%;
+    padding-top: 150px;
+}
+
+#mainSection{
+    width: 80%;
+    height: 100vh;
+    padding-top: 80px;
+}

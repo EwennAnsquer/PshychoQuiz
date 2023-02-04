@@ -1,0 +1,15 @@
+.accueilForm{
+    width: 50%;
+}
+
+body{
+    min-height: 100vh;
+}
+
+.startQuiz{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #b448ff;
+    border: 0;
+}

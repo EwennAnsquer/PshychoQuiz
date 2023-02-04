@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+#nav{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	color:black;
+	background-color: #B448FF;
+	
+}
+#navdroite{
+	color:black;
+	background-color: #B448FF;
+	position:absolute;
+	left:0%;
+	height:100%;
+	width:5%
+	
+}
+
+#droite{
+	height:50%;
+	width:40px;
+	position:absolute;
+	right:10%;
+}
+*{
+	font-family: 'Lato', sans-serif;
+}
+
+
+#q{
+	position:absolute;
+	top:10%;
+	color: black;
+}
+
+#s{
+	position:absolute;
+	top:13%;
+	color: black;
+}
+#p{
+	position:absolute;
+	top:15%;
+	color: black;
+}
+#boutton{
+color:white;
+	background-color: black;
+	border-color: black;
+	
+}
