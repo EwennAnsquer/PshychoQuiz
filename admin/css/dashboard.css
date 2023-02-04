@@ -1,12 +1,22 @@
 #leftBar{
     background-color: #b448ff;
-    height: 100vh;
+    height: 100%;
     width: 20%;
     padding-top: 150px;
+    position: fixed;
 }
 
 #mainSection{
     width: 80%;
     height: 100vh;
-    padding-top: 80px;
+    margin-top: 80px;
+    margin-left: 20%;
+}
+
+.btn{
+    background-color: #b448ff;
+}
+
+.btn:hover{
+    background-color: #c385f0 !important;
 }

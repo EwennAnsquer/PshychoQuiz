@@ -18,4 +18,11 @@
         $requete->execute();
     }
 
+    function getAllQuestions($connexion){
+        $requete = $connexion->prepare('SELECT `IDQUESTION`,`LIBELLE` FROM `question`');
+        $requete->execute();
+        $data = $requete->fetchAll();
+        return $data;
+    }
+
 ?>
