@@ -10,7 +10,7 @@
 
         header('location:../quiz.php');
     }else{
-        header("location:../accueil.php");
+        header("location:../accueil.php?er=2");
     }
 
 ?>
