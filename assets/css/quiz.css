@@ -2,3 +2,8 @@ body{
     padding-top: 100px;
     min-height: calc(100vh - 80px);
 }
+
+button{
+    background-color: #B448FF !important;
+    border-color: #B448FF !important;
+}

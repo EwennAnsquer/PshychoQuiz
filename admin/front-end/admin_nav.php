@@ -5,7 +5,7 @@
 				<h1 >PsyChoQuizz</h1>
 			</li>
 			<li class="nav-item">
-				<a href="#" class="nav-link">Deconnexion</a>
+				<a href="../admin/back-end/logout.php" class="nav-link">Deconnexion</a>
 			</li>
 		</ul>
 	</div>

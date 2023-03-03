@@ -16,6 +16,12 @@
         include_once("front-end/navbar.php"); 
         include_once("back-end/functions.php");
 
+        if(empty($_GET["er"])==FALSE){
+            ?>
+            <script defer id="jsParams" src="assets/scripts/alert.js" data-error="<?php echo($_GET["er"]); ?>"></script>
+            <?php
+        }
+
     ?>
 
     <form class="accueilForm" action="back-end/insertNewProfil.php" method="get">
