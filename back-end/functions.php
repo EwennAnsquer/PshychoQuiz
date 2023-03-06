@@ -152,5 +152,18 @@
         
         $resultat = array($décision,$dev,$devplus,$devmoins,$reseau,$reseauplus,$reseaumoins);
         return $resultat;
+
+
+        
+    }
+
+    function reqadminprofils($connexion){
+        $reqFormulaire = "SELECT NOM,IDSONDE as ID,  sonde.IDORIGINE, ANNEE, SEXE FROM origine,sonde WHERE origine.IDORIGINE = sonde.IDORIGINE ORDER by IDSONDE";
+        $profils = $connexion->prepare($reqFormulaire);
+        $profils->execute();
+        $profils_aff = $profils->fetchAll();
+        
+        return $profils_aff;
+
     }
 ?>
