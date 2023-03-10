@@ -147,7 +147,7 @@
             $décision = 1;
         }
         else{
-            $décision = 1;
+            $décision = 2;
         }
         
         $resultat = array($décision,$dev,$devplus,$devmoins,$reseau,$reseauplus,$reseaumoins);
@@ -165,5 +165,14 @@
         
         return $profils_aff;
 
+    }
+
+    function supprimer_profil($connexion, $id){
+        $req = "DELETE FROM origine WHERE IDORIGINE = $id ";
+        $suppr = $connexion->prepare($req);
+        $suppr->execute();
+        $req = "DELETE FROM sonde WHERE IDORIGINE = $id ";
+        $suppr = $connexion->prepare($req);
+        $suppr->execute();
     }
 ?>
