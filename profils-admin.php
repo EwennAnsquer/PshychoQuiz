@@ -8,9 +8,13 @@ $profils_aff= reqadminprofils($connexion)
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content=" width=device-width
+                      initial-scale=1, zoom
+                      shrink-to-fit=no" />
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src = "admin/script/profilsadmin.js"></script>
     <link rel="stylesheet" href="assets/css/profils-admin.css">
 	<link rel="stylesheet" href="assets/css/style.css">
     
@@ -40,8 +44,9 @@ if (!empty($profils_aff)) {
 				<td><?php echo $p['IDORIGINE'] ?></td>
                 <td><?php echo $p['ANNEE'] ?></td>
                 <td><?php echo $p['SEXE'] ?></td>
-                <td><button class="bouttontab">modifier</button><button class="bouttontab">supprimer</button></td>
-            </tr>
+				<td><button class="bouttontab" data-action="modifier" data-id="<?php echo $p['ID'] ?>">modifier</button></td>
+                <td><button class="bouttontab" data-action="supprimer" data-id="<?php echo $p['ID'] ?>">supprimer</button></td>
+        </td>
             <?php
         }
         ?>
