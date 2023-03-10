@@ -117,5 +117,4 @@
         $requete->bindValue(':valeurDev', $valeurDev, PDO::PARAM_INT);
         $requete->execute();
     }
-
 ?>
