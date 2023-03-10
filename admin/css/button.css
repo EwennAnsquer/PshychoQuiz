@@ -1,9 +1,0 @@
-.btn{
-    background-color: #b448ff !important;
-    transition: 0.3s;
-}
-
-.btn:hover{
-    transform: scale(0.95);
-    background-color: #b448ff !important;
-}
