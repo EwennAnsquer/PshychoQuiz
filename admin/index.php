@@ -17,19 +17,25 @@
 <body class="d-flex justify-content-center align-items-center h-100">
     <?php
         require_once('../front-end/navbar.php');
+
+        if(empty($_GET["er"])==FALSE){
+            ?>
+            <script defer id="jsParams" src="scripts/alert.js" data-error="<?php echo($_GET["er"]); ?>"></script>
+            <?php
+        }
     ?>
 
     <form class="w-25" action="back-end/login.php" method="post">
         <!-- Email input -->
         <div class="form-outline mb-4">
-            <input type="text" id="idInput" class="form-control" name="id"/>
             <label class="form-label" for="idInput">Identifiant</label>
+            <input type="text" id="idInput" class="form-control" name="id"/>
         </div>
 
         <!-- Password input -->
         <div class="form-outline mb-4">
-            <input type="password" id="passwordInput" class="form-control" name="password"/>
             <label class="form-label" for="passwordInput">Mot de passe</label>
+            <input type="password" id="passwordInput" class="form-control" name="password"/>
         </div>
 
         <!-- Submit button -->

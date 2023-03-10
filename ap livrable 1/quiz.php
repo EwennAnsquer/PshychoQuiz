@@ -49,11 +49,11 @@
                             ?>
                                 <td class="border border-dark p-2">
                                     <label for="<?php echo($value["IDQUESTION"]); ?>">1</label>
-                                    <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="0">
                                     <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="1">
                                     <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="2">
                                     <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="3">
                                     <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="4">
+                                    <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="5">
                                     <label for="<?php echo($value["IDQUESTION"]); ?>">5</label>
                                 </td>
                             <?php

@@ -15,11 +15,11 @@
 
             header("location:../statistiques.php");
         }else{
-            header("location:../index.php");
+            header("location:../?er=1");
         }
 
     }else{
-        header("location:../index.php");
+        header("location:../?er=1");
     }
 
 ?>

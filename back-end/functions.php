@@ -26,7 +26,7 @@
     }
 
     function selectNumberQuestion($connexion){
-        $requete = $connexion->prepare('SELECT count(*) FROM `question` WHERE 1');
+        $requete = $connexion->prepare('SELECT count(*) FROM `question`');
         $requete->execute();
         $data = $requete->fetchAll();
         return $data[0][0];
@@ -34,15 +34,15 @@
 
     function ifAllQuestionsAnswered($data,$connexion){
         $i=0;
+        $ok=FALSE;
         $nbQuestions = (int)selectNumberQuestion($connexion);
-        while(($i != $nbQuestions) && (empty($_POST[$data[$i][0]])!=1)){
+        while(($i != $nbQuestions) && (empty($_POST[$data[$i][0]])!=TRUE)){
             $i++;
         }
-        if($i<$nbQuestions){
-            return FALSE;
-        }else{
-            return TRUE;
+        if($i==$nbQuestions){
+            $ok=TRUE;
         }
+        return $ok;
     }
 
     function selectLastSonde($connexion){
@@ -54,6 +54,15 @@
 
     function selectScoreFerme($IDQUESTION,$connexion){
         $requete = $connexion->prepare('SELECT scorefres,scorefdev FROM `question` inner join scorefermee on question.IDSCOREFERMEE = scorefermee.IDSCOREF WHERE IDQUESTION=:idquestion');
+        $requete->bindValue(':idquestion', $IDQUESTION, PDO::PARAM_INT);
+        $requete->execute();
+        $data = $requete->fetchAll();
+        return $data[0];
+    }
+
+
+    function selectScoreEchelle($IDQUESTION,$connexion){
+        $requete = $connexion->prepare('SELECT NBPTMULTRES, NBPTMULTDEV FROM question INNER JOIN scorech ON question.IDSCORECH = scorech.IDSCORECH WHERE IDQUESTION=:idquestion');
         $requete->bindValue(':idquestion', $IDQUESTION, PDO::PARAM_INT);
         $requete->execute();
         $data = $requete->fetchAll();
@@ -80,6 +89,10 @@
         return $data[0][0];
     }
 
+    //function selectCoeffQuestionEchelle($IDQUESTION,$connexion){ // pas bon
+    //    $requete=$connexion->prepare('')
+    //}
+
     function selectGoodAnswerValue($data){
         if($data[0]>$data[1]){
             return [$data[0],"res"];
@@ -104,6 +117,7 @@
         $requete->bindValue(':valeurDev', $valeurDev, PDO::PARAM_INT);
         $requete->execute();
     }
+<<<<<<< HEAD
     function résultataff($connexion){
 
         $reseau = 0;
@@ -175,4 +189,6 @@
         $suppr = $connexion->prepare($req);
         $suppr->execute();
     }
+=======
+>>>>>>> c4698890bd23e4154eedff15fcd25e8c45417fc4
 ?>
