@@ -33,10 +33,15 @@
                     }
                 }
 
-            }else{
+            }else if($data["IDTYPEQUESTION"]==2){
                 echo("Question echelle <br>");
+                $coeff=selectScoreEchelle($data["IDQUESTION"],$connexion);
+                $resultatDev=$coeff[0]*$value;
+                $resultatRes=$coeff[1]*$value;
+                insertIntoReponseAssociee($data["IDQUESTION"],$idLastSonde,$resultatRes,$resultatDev,$connexion);
             }
         }
+        header("location:../resultat.php");
     }else{
         header("location:../quiz.php?er=1");
     }
