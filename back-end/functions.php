@@ -117,4 +117,78 @@
         $requete->bindValue(':valeurDev', $valeurDev, PDO::PARAM_INT);
         $requete->execute();
     }
+<<<<<<< HEAD
+    function résultataff($connexion){
+
+        $reseau = 0;
+        $reseauplus = 0;
+        $reseaumoins = 0;
+        $dev = 0;
+        $devplus = 0;
+        $devmoins = 0;
+        $resultat = [];
+        $requete = $connexion->prepare("SELECT VALEURRES, VALEURRDEV
+        FROM reponseassociee
+        WHERE IDSONDE = (SELECT MAX(IDSONDE) FROM reponseassociee) ");
+        $requete->execute();
+        $data = $requete->fetchAll();
+        foreach($data as $res){
+            $reseau += $res['VALEURRES'];
+            if($res['VALEURRES'] >0){
+                $reseauplus+= $res['VALEURRES'];
+
+            }
+            else
+            {
+                $reseaumoins+= ($res['VALEURRES']*-1);
+            }
+
+
+            $dev += $res['VALEURRDEV'];
+            if($res['VALEURRDEV'] >0){
+                $devplus+= $res['VALEURRDEV'];
+
+            }
+            else
+            {
+                $devmoins+= ($res['VALEURRDEV']*-1);
+            }
+        }
+        if($reseau > 20 and $dev < 20){
+            $décision = 3;
+        }
+        if($reseau > 20 and $dev < 20){
+            $décision = 1;
+        }
+        else{
+            $décision = 2;
+        }
+        
+        $resultat = array($décision,$dev,$devplus,$devmoins,$reseau,$reseauplus,$reseaumoins);
+        return $resultat;
+
+
+        
+    }
+
+    function reqadminprofils($connexion){
+        $reqFormulaire = "SELECT NOM,IDSONDE as ID,  sonde.IDORIGINE, ANNEE, SEXE FROM origine,sonde WHERE origine.IDORIGINE = sonde.IDORIGINE ORDER by IDSONDE";
+        $profils = $connexion->prepare($reqFormulaire);
+        $profils->execute();
+        $profils_aff = $profils->fetchAll();
+        
+        return $profils_aff;
+
+    }
+
+    function supprimer_profil($connexion, $id){
+        $req = "DELETE FROM origine WHERE IDORIGINE = $id ";
+        $suppr = $connexion->prepare($req);
+        $suppr->execute();
+        $req = "DELETE FROM sonde WHERE IDORIGINE = $id ";
+        $suppr = $connexion->prepare($req);
+        $suppr->execute();
+    }
+=======
+>>>>>>> c4698890bd23e4154eedff15fcd25e8c45417fc4
 ?>

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/accueil.css">
 </head>
+
 <body class="d-flex justify-content-center align-items-center">
     <?php 
     
