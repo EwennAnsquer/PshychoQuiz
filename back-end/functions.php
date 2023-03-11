@@ -117,13 +117,8 @@
         $requete->bindValue(':valeurDev', $valeurDev, PDO::PARAM_INT);
         $requete->execute();
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    function résultataff($connexion){
-=======
 
     function resultataff($connexion){
->>>>>>> brancheGeorges
 
         $reseau = 0;
         $reseauplus = 0;
@@ -141,10 +136,6 @@
             $reseau += $res['VALEURRES'];
             if($res['VALEURRES'] >0){
                 $reseauplus+= $res['VALEURRES'];
-<<<<<<< HEAD
-
-=======
->>>>>>> brancheGeorges
             }
             else
             {
@@ -173,35 +164,6 @@
         }
         
         $resultat = array($décision,$dev,$devplus,$devmoins,$reseau,$reseauplus,$reseaumoins);
-<<<<<<< HEAD
-        return $resultat;
-
-
-        
-    }
-
-    function reqadminprofils($connexion){
-        $reqFormulaire = "SELECT NOM,IDSONDE as ID,  sonde.IDORIGINE, ANNEE, SEXE FROM origine,sonde WHERE origine.IDORIGINE = sonde.IDORIGINE ORDER by IDSONDE";
-        $profils = $connexion->prepare($reqFormulaire);
-        $profils->execute();
-        $profils_aff = $profils->fetchAll();
-        
-        return $profils_aff;
-
-    }
-
-    function supprimer_profil($connexion, $id){
-        $req = "DELETE FROM origine WHERE IDORIGINE = $id ";
-        $suppr = $connexion->prepare($req);
-        $suppr->execute();
-        $req = "DELETE FROM sonde WHERE IDORIGINE = $id ";
-        $suppr = $connexion->prepare($req);
-        $suppr->execute();
-    }
-=======
->>>>>>> c4698890bd23e4154eedff15fcd25e8c45417fc4
-=======
         return $resultat; 
     }
->>>>>>> brancheGeorges
 ?>
