@@ -123,9 +123,7 @@
         $devplus = 0;
         $devmoins = 0;
         $resultat = [];
-        $requete = $connexion->prepare("SELECT VALEURRES, VALEURRDEV
-        FROM reponseassociee
-        WHERE IDSONDE = (SELECT MAX(IDSONDE) FROM reponseassociee) ");
+        $requete = $connexion->prepare("SELECT VALEURRES, VALEURRDEV FROM reponseassociee WHERE IDSONDE = (SELECT MAX(IDSONDE) FROM reponseassociee) ");
         $requete->execute();
         $data = $requete->fetchAll();
         foreach($data as $res){
