@@ -33,13 +33,9 @@
     }
 
     function ifAllQuestionsAnswered($data,$connexion){
-        $i=0;
         $ok=FALSE;
         $nbQuestions = (int)selectNumberQuestion($connexion);
-        while(($i != $nbQuestions) && (empty($_POST[$data[$i][0]])!=TRUE)){
-            $i++;
-        }
-        if($i==$nbQuestions){
+        if(count($_POST)==$nbQuestions){
             $ok=TRUE;
         }
         return $ok;

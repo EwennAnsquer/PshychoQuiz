@@ -43,6 +43,6 @@
         }
         header("location:../resultat.php");
     }else{
-        header("location:../quiz.php?er=1");
+        // header("location:../quiz.php?er=1");
     }
 ?>
