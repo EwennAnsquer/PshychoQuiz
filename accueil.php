@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(isset($_SESSION["TotalPoints"])){
+        header("location:resultat.php");
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
