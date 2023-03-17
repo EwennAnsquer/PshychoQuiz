@@ -17,7 +17,7 @@
     <?php
         require_once('front-end/navbar.php');
         require_once('back-end/functions.php');
-        $resultat = resultataff($connexion);
+        $resultat = resultataff($connexion); //calcul les résulats
     ?>
     <main class="d-flex flex-column align-items-center justify-content-between">
         <h3>Calcul des points</h3>

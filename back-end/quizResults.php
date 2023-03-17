@@ -6,7 +6,7 @@
     $questions=getAllQuestions($connexion);
 
     if(ifAllQuestionsAnswered($questions,$connexion)){
-        foreach($_POST as $key=>$value){
+        foreach($_POST as $key=>$value){ //boucle sur chaque POST envoyer de la page QUIZZ
             $data=$questions[$key-1];
             echo "$key=$value <br>";
 
@@ -43,6 +43,6 @@
         }
         header("location:../resultat.php");
     }else{
-        // header("location:../quiz.php?er=1");
+        header("location:../quiz.php?er=1");
     }
 ?>

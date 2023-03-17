@@ -15,7 +15,7 @@
         require_once('front-end/navbar.php');
         require_once('back-end/functions.php');
 
-        if(empty($_GET["er"])==FALSE){
+        if(empty($_GET["er"])==FALSE){ //si paramètre er dans l'url alors on import un fichier js qui récupère la valeur de er et affiche une alerte
             ?>
             <script defer id="jsParams" src="assets/scripts/alert.js" data-error="<?php echo($_GET["er"]); ?>"></script>
             <?php
@@ -64,7 +64,7 @@
                         }
                     ?>
             </table>
-            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+            <button type="submit" class="btn btn-primary mt-5">Envoyer</button>
         </form>
     </main>
 </body>
