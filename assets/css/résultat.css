@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+table, th,td {
+    border: 3px solid black;
+    border-collapse: collapse;
+  }
+  img{
+    position:absolute;
+    left:30%;
+    top:35%;
+    float:left;
+
+}
+
+#resultatstexte{
+    position:absolute;
+    left:30%;
+    top:32%;
+    color:blue ;
+}
+#texteimage{
+    display:inline-block;
+    position:absolute;
+    left:47%;
+    top:35%;
+    margin-right: 200px;
+}
+#titrepoint{
+    position:relative;
+    left:50%;
+    top:20%;
+}
+#tableau{
+    width: 35%;
+    position:absolute;
+    left:35%;
+    top:15%;
+    border:solid 3px black;	
+}
+#profil{
+    position:absolute;
+    left:50%;
+    top:25%;
+    color:blue;
+}
+

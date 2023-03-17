@@ -1,10 +1,17 @@
+<?php
+    session_start();
+    if(isset($_SESSION["TotalPoints"])){
+        header("location:resultat.php");
+    }
+    var_dump($_SESSION["TotalPoints"]);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quizz</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
@@ -15,7 +22,7 @@
         require_once('front-end/navbar.php');
         require_once('back-end/functions.php');
 
-        if(empty($_GET["er"])==FALSE){
+        if(empty($_GET["er"])==FALSE){ //si paramètre er dans l'url alors on import un fichier js qui récupère la valeur de er et affiche une alerte
             ?>
             <script defer id="jsParams" src="assets/scripts/alert.js" data-error="<?php echo($_GET["er"]); ?>"></script>
             <?php
@@ -49,11 +56,11 @@
                             ?>
                                 <td class="border border-dark p-2">
                                     <label for="<?php echo($value["IDQUESTION"]); ?>">1</label>
+                                    <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="0">
                                     <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="1">
                                     <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="2">
                                     <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="3">
                                     <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="4">
-                                    <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="5">
                                     <label for="<?php echo($value["IDQUESTION"]); ?>">5</label>
                                 </td>
                             <?php
@@ -64,7 +71,7 @@
                         }
                     ?>
             </table>
-            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+            <button type="submit" class="btn btn-primary mt-5">Envoyer</button>
         </form>
     </main>
 </body>

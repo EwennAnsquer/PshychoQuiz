@@ -1,12 +1,14 @@
 <?php
+    session_start();
+    if(isset($_SESSION["TotalPoints"])){
+        header("location:resultat.php");
+    }
     require_once('functions.php');
 
     $questions=getAllQuestions($connexion);
 
     if(ifAllQuestionsAnswered($questions,$connexion)){
-        $idLastSonde=selectLastSonde($connexion)["IDSONDE"];
-
-        foreach($_POST as $key=>$value){
+        foreach($_POST as $key=>$value){ //boucle sur chaque POST envoyer de la page QUIZZ
             $data=$questions[$key-1];
             echo "$key=$value <br>";
 
@@ -30,7 +32,7 @@
                 $coeff=selectScoreEchelle($data["IDQUESTION"],$connexion);
                 $resultatDev=$coeff[0]*$value;
                 $resultatRes=$coeff[1]*$value;
-                insertIntoReponseAssociee($data["IDQUESTION"],$idLastSonde,$resultatRes,$resultatDev,$connexion);
+                insertIntoReponseAssociee($data["IDQUESTION"],$_SESSION["IdSonde"],$resultatRes,$resultatDev,$connexion);
             }
         }
         header("location:../resultat.php");
