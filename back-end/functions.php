@@ -118,4 +118,52 @@
         $requete->execute();
     }
 
+    function resultataff($connexion){
+
+        $reseau = 0;
+        $reseauplus = 0;
+        $reseaumoins = 0;
+        $dev = 0;
+        $devplus = 0;
+        $devmoins = 0;
+        $resultat = [];
+        $requete = $connexion->prepare("SELECT VALEURRES, VALEURRDEV
+        FROM reponseassociee
+        WHERE IDSONDE = (SELECT MAX(IDSONDE) FROM reponseassociee) ");
+        $requete->execute();
+        $data = $requete->fetchAll();
+        foreach($data as $res){
+            $reseau += $res['VALEURRES'];
+            if($res['VALEURRES'] >0){
+                $reseauplus+= $res['VALEURRES'];
+            }
+            else
+            {
+                $reseaumoins+= ($res['VALEURRES']*-1);
+            }
+
+
+            $dev += $res['VALEURRDEV'];
+            if($res['VALEURRDEV'] >0){
+                $devplus+= $res['VALEURRDEV'];
+
+            }
+            else
+            {
+                $devmoins+= ($res['VALEURRDEV']*-1);
+            }
+        }
+        if($reseau > 20 and $dev < 20){
+            $décision = 3;
+        }
+        if($reseau > 20 and $dev < 20){
+            $décision = 1;
+        }
+        else{
+            $décision = 2;
+        }
+        
+        $resultat = array($décision,$dev,$devplus,$devmoins,$reseau,$reseauplus,$reseaumoins);
+        return $resultat; 
+    }
 ?>

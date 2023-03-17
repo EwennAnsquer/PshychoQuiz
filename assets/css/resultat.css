@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+table, th,td {
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+
+#resultatstexte{
+    margin-bottom: 20px;
+    color: blue;
+}
+
+#tableau{
+    width: 35%;
+    border:solid 3px black;	
+}
+#profil{
+    color:blue;
+}
+
+section{
+    width: 50%;
+}
+
+section p{
+    text-align: justify;
+    font-size: 18px;
+}
+
+section img{
+    float: left;
+    margin: 0 10px 10px;
+}
