@@ -14,25 +14,18 @@
 
             if($data["IDTYPEQUESTION"]==1){
                 echo("Question fermee <br>");
-                $scorefermee=selectScoreFerme($data["IDQUESTION"],$connexion); //res puis dev
                 $rep=selectRepQuestion($data["IDQUESTION"],$connexion);
-                $goodValue=selectGoodAnswerValue($scorefermee);
-                $badValue=selectBadAnswerValue($scorefermee);
-
-                if($data["IDTYPEQUESTION"]==1){
-                    echo("Question fermee <br>");
-                    $rep=selectRepQuestion($data["IDQUESTION"],$connexion);
-                    if($rep==1 && $value==1){
-                        $requeteRep=selectScoreFerme($data["IDQUESTION"],$connexion);
-                        $resDev=$requeteRep[0];
-                        $resRes=$requeteRep[1];
-                        insertIntoReponseAssociee($data["IDQUESTION"],$_SESSION["IdSonde"],$resRes,$resDev,$connexion);
-                    }else if($rep==2 && $value==2){
-                        $requeteRep=selectScoreFerme($data["IDQUESTION"],$connexion);
-                        $resDev=$requeteRep[0];
-                        $resRes=$requeteRep[1];
-                        insertIntoReponseAssociee($data["IDQUESTION"],$_SESSION["IdSonde"],$resRes,$resDev,$connexion);
-                    }
+                if($rep==1 && $value==1){
+                    $requeteRep=selectScoreFerme($data["IDQUESTION"],$connexion);
+                    $resDev=$requeteRep[0];
+                    $resRes=$requeteRep[1];
+                    insertIntoReponseAssociee($data["IDQUESTION"],$idLastSonde,$resRes,$resDev,$connexion);
+                }else if($rep==2 && $value==2){
+                    $requeteRep=selectScoreFerme($data["IDQUESTION"],$connexion);
+                    $resDev=$requeteRep[0];
+                    $resRes=$requeteRep[1];
+                    insertIntoReponseAssociee($data["IDQUESTION"],$idLastSonde,$resRes,$resDev,$connexion);
+                }
 
                 }else if($data["IDTYPEQUESTION"]==2){
                     echo("Question echelle <br>");

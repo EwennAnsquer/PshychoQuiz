@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="d-flex flex-column">
                                         <label class="pe-2 ps-2" for="<?php echo($value["IDQUESTION"]); ?>">Non</label>
-                                        <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="0">
+                                        <input type="radio" name="<?php echo($value["IDQUESTION"]); ?>" value="2">
                                     </div>
                                 </td>
                             <?php
