@@ -1,0 +1,21 @@
+.idQuestion{
+    min-width: 30px;
+}
+
+.libQuestion{
+    max-width: 500px;
+    flex-grow: 1;
+
+}
+
+.enjeuQuestion,.typeQuestion{
+    width: 150px;
+}
+
+.hidden{
+    visibility: hidden !important;
+}
+
+.scoreQuestion{
+    width: 50px;
+}
