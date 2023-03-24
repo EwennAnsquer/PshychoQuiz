@@ -85,26 +85,6 @@
         return $data[0][0];
     }
 
-    //function selectCoeffQuestionEchelle($IDQUESTION,$connexion){ // pas bon
-    //    $requete=$connexion->prepare('')
-    //}
-
-    function selectGoodAnswerValue($data){
-        if($data[0]>$data[1]){
-            return [$data[0],"res"];
-        }else{
-            return [$data[1],"dev"];
-        }
-    }
-
-    function selectBadAnswerValue($data){
-        if($data[0]<$data[1]){
-            return [$data[0],"res"];
-        }else{
-            return [$data[1],"dev"];
-        }
-    }
-
     function insertIntoReponseAssociee($idquestion,$idsonde,$valeurRes,$valeurDev,$connexion){ //insert une réponse avec toutes les infos
         $requete = $connexion->prepare("INSERT INTO `reponseassociee`(`IDQUESTION`, `IDSONDE`, `VALEURRES`, `VALEURRDEV`) VALUES (:idquestion,:idsonde,:valeurRes,:valeurDev)");
         $requete->bindValue(':idquestion', $idquestion, PDO::PARAM_INT);
