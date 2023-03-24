@@ -19,21 +19,20 @@
                     $requeteRep=selectScoreFerme($data["IDQUESTION"],$connexion);
                     $resDev=$requeteRep[0];
                     $resRes=$requeteRep[1];
-                    insertIntoReponseAssociee($data["IDQUESTION"],$idLastSonde,$resRes,$resDev,$connexion);
+                    insertIntoReponseAssociee($data["IDQUESTION"],$_SESSION["IdSonde"],$resRes,$resDev,$connexion);
                 }else if($rep==2 && $value==2){
                     $requeteRep=selectScoreFerme($data["IDQUESTION"],$connexion);
                     $resDev=$requeteRep[0];
                     $resRes=$requeteRep[1];
-                    insertIntoReponseAssociee($data["IDQUESTION"],$idLastSonde,$resRes,$resDev,$connexion);
+                    insertIntoReponseAssociee($data["IDQUESTION"],$_SESSION["IdSonde"],$resRes,$resDev,$connexion);
                 }
 
-                }else if($data["IDTYPEQUESTION"]==2){
-                    echo("Question echelle <br>");
-                    $coeff=selectScoreEchelle($data["IDQUESTION"],$connexion);
-                    $resultatDev=$coeff[0]*$value;
-                    $resultatRes=$coeff[1]*$value;
-                    insertIntoReponseAssociee($data["IDQUESTION"],$_SESSION["IdSonde"],$resultatRes,$resultatDev,$connexion);
-                }
+            }else if($data["IDTYPEQUESTION"]==2){
+                echo("Question echelle <br>");
+                $coeff=selectScoreEchelle($data["IDQUESTION"],$connexion);
+                $resultatDev=$coeff[0]*$value;
+                $resultatRes=$coeff[1]*$value;
+                insertIntoReponseAssociee($data["IDQUESTION"],$_SESSION["IdSonde"],$resultatRes,$resultatDev,$connexion);
             }
         }
         header("location:../resultat.php");
