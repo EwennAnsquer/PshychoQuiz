@@ -18,7 +18,7 @@
                 if($rep==1 && $value==1){
                     $requeteRep=selectScoreFerme($data["IDQUESTION"],$connexion);
                     $resRes=$requeteRep[0];
-                    $resRev=$requeteRep[1];
+                    $resDev=$requeteRep[1];
                     insertIntoReponseAssociee($data["IDQUESTION"],$_SESSION["IdSonde"],$resRes,$resDev,$connexion);
                 }else if($rep==2 && $value==2){
                     $requeteRep=selectScoreFerme($data["IDQUESTION"],$connexion);
