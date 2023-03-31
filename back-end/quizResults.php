@@ -17,13 +17,13 @@
                 $rep=selectRepQuestion($data["IDQUESTION"],$connexion);
                 if($rep==1 && $value==1){
                     $requeteRep=selectScoreFerme($data["IDQUESTION"],$connexion);
-                    $resDev=$requeteRep[0];
-                    $resRes=$requeteRep[1];
+                    $resRes=$requeteRep[0];
+                    $resRev=$requeteRep[1];
                     insertIntoReponseAssociee($data["IDQUESTION"],$_SESSION["IdSonde"],$resRes,$resDev,$connexion);
                 }else if($rep==2 && $value==2){
                     $requeteRep=selectScoreFerme($data["IDQUESTION"],$connexion);
-                    $resDev=$requeteRep[0];
-                    $resRes=$requeteRep[1];
+                    $resRes=$requeteRep[0];
+                    $resDev=$requeteRep[1];
                     insertIntoReponseAssociee($data["IDQUESTION"],$_SESSION["IdSonde"],$resRes,$resDev,$connexion);
                 }
 
