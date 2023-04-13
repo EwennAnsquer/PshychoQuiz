@@ -6,13 +6,13 @@
 			</li>
 			<li class="nav-item">
 				<?php
-					if(isset($_SESSION["id"])){
-						?>
-							<a href="../admin/back-end/logout.php" class="nav-link">Deconnexion</a>
-						<?php
-					}else if(isset($_SESSION["TotalPoints"])){
+					if(isset($_SESSION["TotalPoints"])){
 						?>
 							<a href="back-end/logout.php" class="nav-link">Recommencer le quiz</a>
+						<?php
+					}else if(isset($_SESSION["id"])){
+						?>
+							<a href="../admin/back-end/logout.php" class="nav-link">Deconnexion</a>
 						<?php
 					}
 				?>

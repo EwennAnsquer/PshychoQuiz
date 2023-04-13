@@ -19,3 +19,32 @@
 .scoreQuestion{
     width: 50px;
 }
+
+button a{
+    color: white;
+    text-decoration: none;
+}
+
+button a:hover{
+    color: white;
+}
+
+#popupDelete{
+    width: 40vw;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    display: none;
+    z-index: 100000;
+}
+
+#refuseDelete{
+    margin: 0;
+}
+
+.dontMove{
+    overflow: hidden;
+}
