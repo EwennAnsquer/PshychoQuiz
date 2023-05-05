@@ -34,6 +34,6 @@
         </section>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-    <script src="script/stats.js"></script>
+    <script src="scripts/stats.js"></script>
 </body>
 </html>
