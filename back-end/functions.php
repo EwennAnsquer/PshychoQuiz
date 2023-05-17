@@ -25,6 +25,14 @@
         return $data;
     }
 
+    function getQuestion($id,$connexion){ //select toutes infos d'une question
+        $requete = $connexion->prepare('SELECT * FROM `question` WHERE `IDQUESTION`=:idquestion');
+        $requete->bindValue(':idquestion', $id, PDO::PARAM_INT);
+        $requete->execute();
+        $data = $requete->fetchAll();
+        return $data[0];
+    }
+
     function selectNumberQuestion($connexion){ //select le nombre de questions
         $requete = $connexion->prepare('SELECT count(*) FROM `question`');
         $requete->execute();
@@ -43,6 +51,17 @@
 
     function selectLastSonde($connexion){ //selct les infos du dernier sonde
         $requete = $connexion->prepare('SELECT * FROM sonde ORDER BY IDSONDE DESC LIMIT 1');
+        $requete->execute();
+        $data = $requete->fetchAll();
+        return $data[0];
+    }
+
+    function selectLastScore($type,$connexion){ //selct les infos du dernier score du type de la question
+        if($type==1){
+            $requete = $connexion->prepare('SELECT * FROM `scorefermee` ORDER BY `IDSCOREF` DESC LIMIT 1');
+        }else{
+            $requete = $connexion->prepare('SELECT * FROM `scorech` ORDER BY `IDSCORECH` DESC LIMIT 1');
+        }
         $requete->execute();
         $data = $requete->fetchAll();
         return $data[0];
@@ -83,6 +102,78 @@
         $requete->execute();
         $data = $requete->fetchAll();
         return $data[0][0];
+    }
+
+    function updateQuestion($id,$lib,$type,$enjeu,$idScore,$connexion){
+        if($type==1){
+            $scorefermee=$idScore;
+            $scorech=1;
+        }else{
+            $scorefermee=1;
+            $scorech=$idScore;
+        }
+        $requete = $connexion->prepare("UPDATE `question` SET `LIBELLE`=:libelle,`ENJEU`=:enjeu,`IDTYPEQUESTION`=:type,`IDSCOREFERMEE`=:scorefermee,`IDSCORECH`=:scorech WHERE `IDQUESTION`=:id");
+        $requete->bindValue(':libelle', $lib, PDO::PARAM_STR);
+        $requete->bindValue(':enjeu', $enjeu, PDO::PARAM_STR);
+        $requete->bindValue(':type', $type, PDO::PARAM_INT);
+        $requete->bindValue(':id', $id, PDO::PARAM_INT);
+        $requete->bindValue(':scorefermee', $scorefermee, PDO::PARAM_INT);
+        $requete->bindValue(':scorech', $scorech, PDO::PARAM_INT);
+        $requete->execute();
+        $data = $requete->fetchAll();
+    }
+
+    function insertIntoQuestion($lib,$type,$enjeu,$idScore,$connexion){
+        if($type==1){
+            $scorefermee=$idScore;
+            $scorech=1;
+        }else{
+            $scorefermee=1;
+            $scorech=$idScore;
+        }
+        $requete = $connexion->prepare("INSERT INTO `question`(`LIBELLE`, `ENJEU`, `IDTYPEQUESTION`, `IDSCOREFERMEE`, `IDSCORECH`) VALUES (:libelle,:enjeu,:type,:scorefermee,:scorech)");
+        $requete->bindValue(':libelle', $lib, PDO::PARAM_STR);
+        $requete->bindValue(':enjeu', $enjeu, PDO::PARAM_STR);
+        $requete->bindValue(':type', $type, PDO::PARAM_INT);
+        $requete->bindValue(':scorefermee', $scorefermee, PDO::PARAM_INT);
+        $requete->bindValue(':scorech', $scorech, PDO::PARAM_INT);
+        $requete->execute();
+    }
+
+    function deleteQuestion($id,$connexion){
+        $requete = $connexion->prepare("DELETE FROM `question` WHERE `IDQUESTION`=:id");
+        $requete->bindValue(':id', $id, PDO::PARAM_INT);
+        $requete->execute();
+    }
+
+    function ifExistScore($typeScore,$rep,$scoreRes,$scoreDev,$connexion){
+        if($typeScore==1){
+            $requete = $connexion->prepare('SELECT * FROM `scorefermee` WHERE `SCOREFRES`=:scoreres and `SCOREFDEV`=:scoredev and `REP`=:rep');
+            $requete->bindValue(':scoreres', $scoreRes, PDO::PARAM_INT);
+            $requete->bindValue(':scoredev', $scoreDev, PDO::PARAM_INT);
+            $requete->bindValue(':rep', $rep, PDO::PARAM_INT);
+        }else{
+            $requete = $connexion->prepare('SELECT * FROM `scorech` WHERE `NBPTMULTRES`=:scoreres and `NBPTMULTDEV`=:scoredev');
+            $requete->bindValue(':scoreres', $scoreRes, PDO::PARAM_INT);
+            $requete->bindValue(':scoredev', $scoreDev, PDO::PARAM_INT);
+        }
+        $requete->execute();
+        $data = $requete->fetchAll();
+        return $data;
+    }
+
+    
+    function insertIntoScore($typeScore,$scoreRes,$scoreDev,$rep,$connexion){
+        if($typeScore==1){
+            $requete = $connexion->prepare("INSERT INTO `scorefermee`(`REP`, `SCOREFRES`, `SCOREFDEV`) VALUES (:rep,:scoreres,:scoredev)");
+            $requete->bindValue(':rep', $rep, PDO::PARAM_INT);
+        }else{
+            $requete = $connexion->prepare("INSERT INTO `scorech`(`NBPTMULTRES`, `NBPTMULTDEV`) VALUES (:scoreres,:scoredev)");
+        }
+        
+        $requete->bindValue(':scoreres', $scoreRes, PDO::PARAM_INT);
+        $requete->bindValue(':scoredev', $scoreDev, PDO::PARAM_INT);
+        $requete->execute();
     }
 
     function insertIntoReponseAssociee($idquestion,$idsonde,$valeurRes,$valeurDev,$connexion){ //insert une réponse avec toutes les infos

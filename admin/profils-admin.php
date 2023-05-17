@@ -8,9 +8,7 @@ $profils_aff= reqadminprofils($connexion)
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content=" width=device-width
-                      initial-scale=1, zoom
-                      shrink-to-fit=no" />
+    <meta content=" width=device-width initial-scale=1, zoom shrink-to-fit=no" />
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -23,8 +21,6 @@ $profils_aff= reqadminprofils($connexion)
 	<h1 id = "pro">PROFILS</h1>
 	<br>
 	<br>
-	
-		
 		<?php
 if (!empty($profils_aff)) {
     ?><table>
